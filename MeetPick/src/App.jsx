@@ -1,122 +1,209 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import heroImg from './assets/hero.png'
-import './App.css'
+import { useState } from "react";
+import "./App.css";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [showForm, setShowForm] = useState(false);
+
+  const [meetingName, setMeetingName] = useState(
+    "멋사 토이프로젝트 회의"
+  );
+
+  const [participantCount, setParticipantCount] = useState("6명");
+
+  const isReady =
+    meetingName.trim() !== "" &&
+    participantCount.trim() !== "";
 
   return (
-    <>
-      <section id="center">
-        <div className="hero">
-          <img src={heroImg} className="base" width="170" height="179" alt="" />
-          <img src={reactLogo} className="framework" alt="React logo" />
-          <img src={viteLogo} className="vite" alt="Vite logo" />
-        </div>
-        <div>
-          <h1>Get started</h1>
-          <p>
-            Edit <code>src/App.jsx</code> and save to test <code>HMR</code>
+    <main className="phone" aria-label="MeetPick 모임 생성">
+      {/* HERO SCREEN */}
+      <section
+        className={`screen hero-screen ${
+          !showForm ? "active" : ""
+        }`}
+      >
+        <img
+          className="brand"
+          src="/assets/logo.png"
+          alt="MeetPick"
+        />
+
+        <div className="copy-column">
+          <span className="chip">
+            <svg viewBox="0 0 24 24" fill="none">
+              <path
+                d="m12 3 1.6 4.7L18 9.3l-4.4 1.6L12 16l-1.6-5.1L6 9.3l4.4-1.6L12 3Z"
+                stroke="currentColor"
+                strokeLinejoin="round"
+              />
+              <path
+                d="m18.8 14 .8 2.4 2.4.8-2.4.8-.8 2.5-.8-2.5-2.5-.8 2.5-.8.8-2.4Z"
+                stroke="currentColor"
+                strokeLinejoin="round"
+              />
+            </svg>
+            AI POWERED
+          </span>
+
+          <h1>
+            모임 시간,
+            <br />
+            이제 AI가 대신 PICK
+          </h1>
+
+          <p className="subtitle">
+            날짜 조율은 AI에게 맡기고,
+            모임에만 집중하세요.
           </p>
         </div>
+
+        <div className="hero-card">
+          <img
+            src="/assets/home-image.png"
+            alt=""
+          />
+        </div>
+
         <button
+          className="primary-button"
           type="button"
-          className="counter"
-          onClick={() => setCount((count) => count + 1)}
+          onClick={() => setShowForm(true)}
         >
-          Count is {count}
+          모임 만들기
         </button>
       </section>
 
-      <div className="ticks"></div>
+      {/* FORM SCREEN */}
+      <section
+        className={`screen form-screen ${
+          showForm ? "active" : ""
+        }`}
+      >
+        <header className="topbar">
+          <button
+            className="back"
+            type="button"
+            aria-label="이전 화면"
+            onClick={() => setShowForm(false)}
+          >
+            <svg viewBox="0 0 24 24" fill="none">
+              <path
+                d="m15 5-7 7 7 7"
+                stroke="currentColor"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+          </button>
 
-      <section id="next-steps">
-        <div id="docs">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#documentation-icon"></use>
+          <div className="title">모임 생성</div>
+
+          <div className="dots">
+            <i></i>
+            <i></i>
+            <i></i>
+          </div>
+        </header>
+
+        <span className="chip">
+          <svg viewBox="0 0 24 24" fill="none">
+            <path
+              d="m12 3 1.6 4.7L18 9.3l-4.4 1.6L12 16l-1.6-5.1L6 9.3l4.4-1.6L12 3Z"
+              stroke="currentColor"
+              strokeLinejoin="round"
+            />
+            <path
+              d="m18.8 14 .8 2.4 2.4.8-2.4.8-.8 2.5-.8-2.5-2.5-.8 2.5-.8.8-2.4Z"
+              stroke="currentColor"
+              strokeLinejoin="round"
+            />
           </svg>
-          <h2>Documentation</h2>
-          <p>Your questions, answered</p>
-          <ul>
-            <li>
-              <a href="https://vite.dev/" target="_blank">
-                <img className="logo" src={viteLogo} alt="" />
-                Explore Vite
-              </a>
-            </li>
-            <li>
-              <a href="https://react.dev/" target="_blank">
-                <img className="button-icon" src={reactLogo} alt="" />
-                Learn more
-              </a>
-            </li>
-          </ul>
+          STEP 1
+        </span>
+
+        <h1>어떤 모임인가요?</h1>
+
+        <p className="subtitle">
+          모임 이름과 참여 인원을 알려주세요.
+        </p>
+
+        <div className="field-list">
+          <label className="field-card">
+            <span className="field-label">
+              <svg viewBox="0 0 24 24" fill="none">
+                <path
+                  d="m4 16 1.1 3.9L9 19l9.6-9.6a2.6 2.6 0 0 0-3.7-3.7L5.3 15.3Z"
+                  stroke="currentColor"
+                  strokeLinejoin="round"
+                />
+                <path
+                  d="M13.5 7.1 17 10.6"
+                  stroke="currentColor"
+                  strokeLinecap="round"
+                />
+              </svg>
+              모임 이름
+            </span>
+
+            <input
+              type="text"
+              value={meetingName}
+              onChange={(e) =>
+                setMeetingName(e.target.value)
+              }
+              placeholder="모임 이름 입력"
+            />
+          </label>
+
+          <label className="field-card">
+            <span className="field-label">
+              <svg viewBox="0 0 24 24" fill="none">
+                <path
+                  d="M8.5 11.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7Z"
+                  stroke="currentColor"
+                />
+                <path
+                  d="M2.8 20a5.7 5.7 0 0 1 11.4 0"
+                  stroke="currentColor"
+                  strokeLinecap="round"
+                />
+                <path
+                  d="M16.5 11a2.8 2.8 0 1 0 0-5.6"
+                  stroke="currentColor"
+                  strokeLinecap="round"
+                />
+                <path
+                  d="M17.1 14.8A5 5 0 0 1 21.2 20"
+                  stroke="currentColor"
+                  strokeLinecap="round"
+                />
+              </svg>
+              참여 인원
+            </span>
+
+            <input
+              type="text"
+              value={participantCount}
+              onChange={(e) =>
+                setParticipantCount(e.target.value)
+              }
+              placeholder="참여 인원 입력"
+            />
+          </label>
         </div>
-        <div id="social">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#social-icon"></use>
-          </svg>
-          <h2>Connect with us</h2>
-          <p>Join the Vite community</p>
-          <ul>
-            <li>
-              <a href="https://github.com/vitejs/vite" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#github-icon"></use>
-                </svg>
-                GitHub
-              </a>
-            </li>
-            <li>
-              <a href="https://chat.vite.dev/" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#discord-icon"></use>
-                </svg>
-                Discord
-              </a>
-            </li>
-            <li>
-              <a href="https://x.com/vite_js" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#x-icon"></use>
-                </svg>
-                X.com
-              </a>
-            </li>
-            <li>
-              <a href="https://bsky.app/profile/vite.dev" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#bluesky-icon"></use>
-                </svg>
-                Bluesky
-              </a>
-            </li>
-          </ul>
+
+        <div className="form-actions">
+          <button
+            className={`primary-button ${
+              isReady ? "ready" : ""
+            }`}
+          >
+            모임 페이지 생성
+          </button>
         </div>
       </section>
-
-      <div className="ticks"></div>
-      <section id="spacer"></section>
-    </>
-  )
+    </main>
+  );
 }
 
-export default App
+export default App;
