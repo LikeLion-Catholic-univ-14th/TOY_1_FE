@@ -4,11 +4,9 @@ import "./App.css";
 function App() {
   const [showForm, setShowForm] = useState(false);
 
-  const [meetingName, setMeetingName] = useState(
-    "멋사 토이프로젝트 회의"
-  );
-
-  const [participantCount, setParticipantCount] = useState("6");
+  const [meetingName, setMeetingName] = useState("");
+  
+  const [participantCount, setParticipantCount] = useState("");
 
   const isReady =
     meetingName.trim() !== "" &&
