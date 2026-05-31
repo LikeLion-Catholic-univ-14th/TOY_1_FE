@@ -181,6 +181,7 @@ function App() {
 
             <input
               type="number"
+              min="0"
               value={participantCount}
               onChange={(e) =>
                 setParticipantCount(e.target.value)
