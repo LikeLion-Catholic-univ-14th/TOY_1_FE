@@ -222,11 +222,26 @@ h1 {
   width: 100%;
   height: 36px;
   margin-top: 10px;
+
   border: 0;
   border-bottom: 1px solid var(--line);
+
   background: transparent;
   outline: none;
+
   font-size: 15px;
+  color: var(--ink);
+
+  transition: border-color 0.2s ease;
+}
+
+.field-card input::placeholder {
+  color: #9aaca7;
+  opacity: 1;
+}
+
+.field-card input:focus {
+  border-bottom: 2px solid var(--green);
 }
 
 .field-card input:focus {
