@@ -232,20 +232,21 @@ h1 {
   font-size: 15px;
   color: var(--ink);
 
-  transition: border-color 0.2s ease;
+  transition: all 0.2s ease;
 }
 
 .field-card input::placeholder {
   color: #9aaca7;
   opacity: 1;
+  transition: color 0.2s ease;
 }
 
 .field-card input:focus {
   border-bottom: 2px solid var(--green);
 }
 
-.field-card input:focus {
-  border-bottom-color: var(--green);
+.field-card input:focus::placeholder {
+  color: var(--ink);
 }
 
 .form-actions {
