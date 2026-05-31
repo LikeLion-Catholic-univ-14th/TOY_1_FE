@@ -149,7 +149,7 @@ function App() {
               onChange={(e) =>
                 setMeetingName(e.target.value)
               }
-              placeholder="모임 이름 입력"
+              placeholder="멋사 토이프로젝트 회의"
             />
           </label>
 
@@ -185,7 +185,7 @@ function App() {
               onChange={(e) =>
                 setParticipantCount(e.target.value)
               }
-              placeholder="참여 인원 입력"
+              placeholder="6"
             />
           </label>
         </div>
