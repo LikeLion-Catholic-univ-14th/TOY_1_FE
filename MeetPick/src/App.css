@@ -121,19 +121,24 @@ h1 {
   min-height: 58px;
   border: 0;
   border-radius: 14px;
-  background: var(--orange-disabled);
+  background: var(--orange);
   color: white;
   font-size: 18px;
   font-weight: 700;
   cursor: pointer;
-  transition: 0.2s;
+  transition: 0.2s ease;
 }
 
-.primary-button.ready {
+.form-actions .primary-button {
+  background: var(--orange-disabled);
+}
+
+.form-actions .primary-button.ready {
   background: var(--orange);
 }
 
 .primary-button:disabled {
+  opacity: 0.8;
   cursor: not-allowed;
 }
 

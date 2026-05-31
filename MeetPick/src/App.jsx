@@ -200,6 +200,7 @@ function App() {
             console.log("모임 생성!");
           }}
           >
+            {isReady ? "활성화" : "비활성화"}
             모임 페이지 생성
           </button>
         </div>
