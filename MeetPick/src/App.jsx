@@ -8,7 +8,7 @@ function App() {
     "멋사 토이프로젝트 회의"
   );
 
-  const [participantCount, setParticipantCount] = useState("6명");
+  const [participantCount, setParticipantCount] = useState("6");
 
   const isReady =
     meetingName.trim() !== "" &&
@@ -182,7 +182,7 @@ function App() {
             </span>
 
             <input
-              type="text"
+              type="number"
               value={participantCount}
               onChange={(e) =>
                 setParticipantCount(e.target.value)
