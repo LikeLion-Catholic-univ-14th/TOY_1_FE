@@ -9,8 +9,7 @@ function App() {
   const [participantCount, setParticipantCount] = useState("");
 
   const isReady =
-    meetingName.trim() !== "" &&
-    participantCount.trim() !== "";
+  meetingName.trim() && participantCount.trim();
 
   return (
     <main className="phone" aria-label="MeetPick 모임 생성">
@@ -192,9 +191,8 @@ function App() {
 
         <div className="form-actions">
           <button
-            className={`primary-button ${
-              isReady ? "ready" : ""
-            }`}
+          className={`primary-button ${isReady ? "ready" : ""}`}
+          type="button"
           >
             모임 페이지 생성
           </button>
