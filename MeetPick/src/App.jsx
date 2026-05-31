@@ -12,11 +12,8 @@ function App() {
   meetingName.trim() !== "" &&
   participantCount.trim() !== "";
   
-  console.log({
-    meetingName,
-    participantCount,
-    isReady,
-  });
+  console.log("meetingName =", meetingName);
+  console.log("participantCount =", participantCount);
   
   return (
     <main className="phone" aria-label="MeetPick 모임 생성">
