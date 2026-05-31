@@ -9,11 +9,11 @@ function App() {
   const [participantCount, setParticipantCount] = useState("");
 
   const isReady =
-  meetingName.trim() !== "" &&
-  participantCount.trim() !== "";
+  meetingName.trim().length > 0 &&
+  participantCount !== "" &&
+  Number(participantCount) > 0;
   
-  console.log("meetingName =", meetingName);
-  console.log("participantCount =", participantCount);
+  console.log(meetingName, participantCount, isReady);
   
   return (
     <main className="phone" aria-label="MeetPick 모임 생성">
@@ -149,9 +149,10 @@ function App() {
             <input
               type="text"
               value={meetingName}
-              onChange={(e) =>
+              onChange={(e) =>{
+                console.log("meetingName 변경:", e.target.value);
                 setMeetingName(e.target.value)
-              }
+              }}
               placeholder="멋사 토이프로젝트 회의"
             />
           </label>
@@ -186,9 +187,10 @@ function App() {
               type="number"
               min="1"
               value={participantCount}
-              onChange={(e) =>
+              onChange={(e) =>{
+                console.log("participantCount 변경:", e.target.value);
                 setParticipantCount(e.target.value)
-              }
+              }}
               placeholder="6"
             />
           </label>
@@ -196,14 +198,12 @@ function App() {
 
         <div className="form-actions">
           <button
-          className={`primary-button ${isReady ? "ready" : ""}`}
-          type="button"
+          className="primary-button"
           disabled={!isReady}
           onClick={() => {
             console.log("모임 생성!");
           }}
           >
-            {isReady ? "활성화" : "비활성화"}
             모임 페이지 생성
           </button>
         </div>
