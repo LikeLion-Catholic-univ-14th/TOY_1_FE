@@ -11,7 +11,13 @@ function App() {
   const isReady =
   meetingName.trim() !== "" &&
   participantCount.trim() !== "";
-
+  
+  console.log({
+    meetingName,
+    participantCount,
+    isReady,
+  });
+  
   return (
     <main className="phone" aria-label="MeetPick 모임 생성">
       {/* HERO SCREEN */}
